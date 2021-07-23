@@ -1,0 +1,47 @@
+@charset "utf-8";
+
+body{
+	background:rgba(207,197,167,0.2);
+	font-family:'Noto Serif TC', serif;
+	font-size:30px;
+	color:rgba(186,203,174,1);
+	text-align:center;
+	display:inline-block;
+}
+
+section{
+	float:left;
+	width:100%;
+	box-sizing:border-box;
+	position:relative;
+
+}
+
+
+section img{
+	padding:40px 0px;
+}
+
+
+aside{
+	position:fixed;
+	z-index:10000;
+}
+
+.home{
+	width:44px;
+	height:44px;
+	background:url(../images/home_.png) no-repeat;
+	background-size:200%;
+}
+
+.home:hover{
+	background:url(../images/home_.png) no-repeat;
+	background-size:200%;
+	background-position:-44px 0px;
+}
+
+footer{
+	font-size:16px;
+	color:grey;
+}

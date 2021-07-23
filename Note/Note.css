@@ -1,0 +1,247 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300&display=swap');
+
+
+ *{
+    display: none;
+    display: block;
+    display: inline;
+    display: inline-block;
+    display: flex;
+    flex-direction: column;
+
+    --yoyo: gray;/*一次更改所有用此變數的值*/
+ }
+
+ :root{  /*套用到整個css*/
+    color: white;
+ }
+
+ body{
+    background: hsl(26,60%,80%) !important;/*優先讀取此數值*/
+    justify-content: center;
+ }
+
+section{
+    background:  var(--yoyo,black); /*black是備用數值,沒讀到前面的變數時作用*/
+    --yoyo: linear-gradient(35deg,#CCFFFF,#FFCCCC); /*可以在任意處覆寫*/
+    width: 100%;
+    height: 1000px;
+}
+
+.box{
+    height: 80%;
+    flex-direction: row;
+    justify-content: center;
+    align-items:center;
+    flex-wrap:no-wrap;
+    background: gray;
+
+}
+
+.box1{
+    box-sizing: border-box;/*div裡面包含padding border 兩者不影響總寬度*/
+    background:blue;
+    height: 50%;
+    flex:2 2 150px; /*若是flex-shrink的話要有flex-basis數值才能成立*/
+    order: 2;
+    align-self: flex-start;
+} 
+
+
+#box2{
+    height: 50%;
+    background: red;
+    flex:1 1 150px; /*flex-grow,flex-shrink,flex-basis*/ /*flex-grow 數值可以<1 */ 
+    order: 1;
+    align-self: flex-end;
+}
+/*
+.box3{
+    box-sizing: border-box;
+    background:yellow;
+    width: 100%;
+    height: 20%;
+}
+
+.box4{
+    box-sizing: border-box;
+    background:purple;
+    width: 100%;
+    height: 20%;
+}
+
+
+.box5{
+    box-sizing: border-box;
+    background:orange;
+    width: 100%;
+    height: 20%;
+}
+
+.box6{
+    box-sizing: border-box;
+    background:cyan;
+    width: 100%;
+    height: 20%;
+    
+}
+*/
+article img{
+    width: 20%;
+    position: relative;
+    left: 20px;
+    transform: skewX(24deg);
+    transform: skewY(24deg);
+
+    animation-name: co;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0,0,0.58,1); /*(x1,y1,x2,y2) x,y*/
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+}
+
+@keyframes co{
+    0%{
+        left: 50px;
+    }
+
+    50%{
+        left: 200px;
+    }
+
+    100%{
+        left: 800px;
+    }
+
+}
+
+
+/* Wave effect*/
+
+
+.wave{
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    transform:translate3d(0,0,0);
+    z-index:-1000;
+
+    content:"";
+    display:block;
+    background:linear-gradient(
+        to left,
+        #A56C58,
+        rgba(238,221,255,0) 20%,
+        rgba(255,255,255,0.5) 70%
+        );
+}
+
+.wave1{
+    background:#DAC3B7;
+    width:1600px;
+    height:1200px;
+    border-radius:40%;
+    opacity:0.1;
+    position:absolute;
+    top:10%;
+    left:0%;
+    transform-origin:center;
+    animation:drift 9s infinite linear;
+    z-index:-2;
+}
+
+.wave2{
+    background:#CF5F49;
+    width:1600px;
+    height:1200px;
+    border-radius:40%;
+    opacity:0.1;
+    position:absolute;
+    top:10%;
+    left:0%;
+    transform-origin:center;
+    animation:drift 11s infinite linear;
+    z-index:-4;
+}
+
+.wave3{
+    background:#AB6C57;
+    width:1600px;
+    height:1200px;
+    border-radius:40%;
+    opacity:0.1;
+    position:absolute;
+    top:10%;
+    left:0%;
+    transform-origin:center;
+    animation:drift 13s infinite linear;
+    z-index:-6;
+}
+
+
+
+@keyframes drift{
+    0{
+        transform:rotate(0deg);
+    }
+    100%{
+        transform:rotate(360deg);
+    }
+}
+
+/* CSS grid  */
+
+.container{
+    display: grid;
+    background:LightGray;
+    width: 100%;
+    min-height: 300px;
+    font-size: 40%;
+    grid-template-columns: 1fr 100px 2fr; /*fr是剩餘部分的比例*/
+    grid-template-rows: 50px 50px 1fr;
+    /* grid-template-columns:repeat(3,1fr 20px) 50px ; 用於大量同寬度的grid (重複3次 1fr 20px) 再一個50px grid  */
+    /* grid-template-rows:repeat(3, minmax(90px,1fr)); 重複三次最小值為90px 最大值為1fr的grid */
+    /* grid-template-columns: repeat(auto-fill, minmax(30px 1fr)); 依照container大小，自動填滿格子，不需計算重複次數 
+    auto-fit一樣功能，但後面空的重複軌道會摺疊 grid 會充滿整個container*/
+
+    grid-column-gap: 10px;
+    grid-row-gap: 5px;
+    /* grid-gap: 5px 10px; 上面兩個結合*/
+    /* justify-items: center; 所有方塊都往水平中心縮 */
+    /* align-items:center 所有方塊往垂直中心縮 */
+    grid-template-areas:  /*分布grid區域*/
+    "header header header"
+    ". middle middle"
+    "footer footer footer";
+}
+
+.d1{
+    /* grid-area: header; 代入header的格子裡*/
+    background: red;
+}
+
+.d2{
+    background: blue;
+    grid-area: 1/2/2/3; /*垂直起始/水平起始/垂直終點/水平終點*/
+}
+
+.d3{
+    background: yellow;
+    align-self: end;
+}
+
+.d4{
+    background: orange;
+    justify-self: center;
+}
+
+.d5{
+    background: pink;
+     grid-column: 2/4; /*grid從第二條column line延伸到第四條column line*/
+     grid-row: 2/4;
+}
