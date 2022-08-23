@@ -1,7 +1,6 @@
-- 👋 Hi, I’m @ChiaHanTu
+- 👋 Hi, I’m Hans!
 - 👀 I’m interested in all kind of great websites :)
-- 🌱 I’m currently learning how to become a Front-end Engineer.
-- 💞️ I’m looking to collaborate on Javascript-related practices.
+- 🌱 Mainly use Vue2 to develop.
 - 📫 Reach me: dujiahan831@gmail.com 
 
 :)
